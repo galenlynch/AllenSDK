@@ -1,6 +1,6 @@
 name: Notebooks
 on:
-  pull_request:
+  push:
     branches:
       - master
 jobs:
@@ -8,10 +8,9 @@ jobs:
     name: Notebook runner
     strategy:
       matrix:
-        os: ["ubuntu-latest"]
         python-version: ["3.13"]
       fail-fast: false
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest-8x
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
