@@ -36,10 +36,6 @@
 
 import math
 
-try:
-    xrange
-except:
-    from past.builtins import xrange
 
 import numpy as np
 import pandas as pd
@@ -178,7 +174,7 @@ def build_hex_pack(n):
             mag = 1
             sign = 1
                       
-            for j in xrange(N-1):
+            for j in range(N-1):
                 x += v[0] * mag * sign
                 y += v[1] * mag * sign
                 mag += 1
