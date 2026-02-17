@@ -57,7 +57,7 @@ nwb_file_name = None
 # reads the NWB file and generates a mapping between sweep name and
 #   stimulus code, and vice versa
 def build_sweep_stim_map():
-    global sweep_stim_map, stim_sweep_map, nwb_file_name, sweep_list
+    global sweep_stim_map, stim_sweep_map, nwb_file_name, sweep_list  # noqa: F824
     try:
         nwb_file = h5py.File(nwb_file_name, "r")
     except Exception:
@@ -94,7 +94,7 @@ def get_sweep_name_by_stimulus_code(stim_name):
 
     Output: sweep name (string), or None if no sweep found for this stim
     """
-    global sweep_stim_map
+    global sweep_stim_map  # noqa: F824
     for k, v in stim_sweep_map.items():
         if k.startswith(stim_name):
             return v
@@ -108,7 +108,7 @@ def sweep_is_ramp(sweep_name):
 
     Output: boolean (True if sweep is ramp, False otherwise)
     """
-    global sweep_stim_map
+    global sweep_stim_map  # noqa: F824
     return sweep_stim_map[sweep_name].startswith("C1RP")
 
 
@@ -119,7 +119,7 @@ def get_sweep_data(sweep_name):
 
     Output: NwbDataSet object
     """
-    global nwb_file_name
+    global nwb_file_name  # noqa: F824
     try:
         num = int(sweep_name.split("_")[-1])
     except Exception:
@@ -280,7 +280,7 @@ def cell_level_features(jin, jout, sweep_tag_list, manual_values):
 ##############################
 def sweep_level_features(jin, jout, sweep_tag_list):
     """ """
-    global sweep_list
+    global sweep_list  # noqa: F824
     # pull out features from each sweep (for ephys_sweeps)
     jout[JSON_BLOCK_SWEEP_DATA] = {}
     for sweep_name in sweep_list:
@@ -361,7 +361,7 @@ def sweep_level_features(jin, jout, sweep_tag_list):
 
 # create a summary table of sweeps and stimuli
 def summarize_sweeps(jin, jout):
-    global nwb_file_name
+    global nwb_file_name  # noqa: F824
     # build stimulus name map
     stim_type_name_map = {}
     for group_name, raw_names in jin["ephys_raw_stimulus_names"].items():

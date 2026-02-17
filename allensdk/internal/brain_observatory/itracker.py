@@ -183,7 +183,7 @@ class iTracker(object):
         )
 
         dpi = 100.0
-        fig, ax = plt.subplots(figsize=(mean_frame.shape[1] / dpi, mean_frame.shape[0] / dpi))
+        fig, ax = plt.subplots(figsize=(mean_frame.shape[1] / dpi, mean_frame.shape[0] / dpi))  # noqa: F821
         fig.subplots_adjust(left=0, right=1, bottom=0, top=1)
 
         ax.imshow(mean_frame_annotated, aspect="normal")
@@ -267,7 +267,7 @@ class iTracker(object):
 
         for input_frame in self.input_stream:
             rep = compute_rep(input_frame)
-            is_closed[i] = svm.predict(rep.reshape(-1, len(rep)))[0]
+            is_closed[i] = svm.predict(rep.reshape(-1, len(rep)))[0]  # noqa: F821
 
         self.is_closed = is_closed
         save_path = os.path.join(self.results_folder, "is_closed.npy")
@@ -295,13 +295,13 @@ class iTracker(object):
             movie_output_stream = None
 
         if output_frames:
-            frame_output_stream = ImageOutputStream()
+            frame_output_stream = ImageOutputStream()  # noqa: F821
             frame_output_stream.open(os.path.join(self.input_image_folder, "input_frame-%06d." + image_file_type))
         else:
             frame_output_stream = None
 
         if output_annotation_frames:
-            annotation_frame_output_stream = ImageOutputStream()
+            annotation_frame_output_stream = ImageOutputStream()  # noqa: F821
             annotation_frame_output_stream.open(
                 os.path.join(self.frames_folder, "output_frame-%06d." + image_file_type)
             )
@@ -356,7 +356,7 @@ class iTracker(object):
 
     def clear_input_images(self):
         logging.debug("Deleting input image folder")
-        shutil.rmtree(os.path.join(self.folder, "input_images"))
+        shutil.rmtree(os.path.join(self.folder, "input_images"))  # noqa: F821
 
     def process_image(self, im, bbox_pupil=None, bbox_cr=None):
         # let's try median filtering the image first
@@ -395,7 +395,7 @@ class iTracker(object):
             pupil_params = result  # fe.ransac_fit(pupil_candidate_points)
         else:
             logging.debug("No good fit found")
-            pupil_params = ((np.nan, np.nan), np.nan, (np.nan, np.nan))  #  np.nan*np.ones(5)
+            pupil_params = ((np.nan, np.nan), np.nan, (np.nan, np.nan))  # np.nan*np.ones(5)
 
         # code for finding corneal reflection, start with finding rays from center of cr
         cr_rays, cr_ray_values = generate_rays(im, self.cr_loc)

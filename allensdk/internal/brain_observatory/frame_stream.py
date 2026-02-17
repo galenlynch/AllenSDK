@@ -285,7 +285,7 @@ class FrameOutputStream(object):
 class ImageOutputStream(FrameOutputStream):
     def _write_frames(frames):
         for i, frame in enumerate(frames):
-            file_name = self.movie_path % i
+            file_name = self.movie_path % i  # noqa: F821
             scipy.misc.imsave(file_name, frame)
 
 

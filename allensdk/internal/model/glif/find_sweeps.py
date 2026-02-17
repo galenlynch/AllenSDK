@@ -62,8 +62,8 @@ def organize_sweeps_by_name(sweeps, name):
         "suprathreshold": get_sweep_numbers(suprathreshold_list),
         "maximum_subthreshold": find_ranked_sweep(subthreshold_list, "stimulus_amplitude", reverse=True),
         "minimum_suprathreshold": find_ranked_sweep(suprathreshold_list, "stimulus_amplitude"),
-        #'maximum_subthreshold': find_ranked_sweep(subthreshold_list, 'stimulus_absolute_amplitude', reverse=True),
-        #'minimum_suprathreshold': find_ranked_sweep(suprathreshold_list, 'stimulus_absolute_amplitude')
+        # 'maximum_subthreshold': find_ranked_sweep(subthreshold_list, 'stimulus_absolute_amplitude', reverse=True),
+        # 'minimum_suprathreshold': find_ranked_sweep(suprathreshold_list, 'stimulus_absolute_amplitude')
     }
 
 
@@ -192,8 +192,8 @@ def main():
 
     ju.write(args.output_file, data)
 
-    if len(errs > 0):
-        for err in errs:
+    if len(errs > 0):  # noqa: F821
+        for err in errs:  # noqa: F821
             logging.error(err)
         sys.exit(1)
 

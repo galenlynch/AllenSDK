@@ -128,7 +128,7 @@ def main():
     sweep_index = {s["sweep_number"]: s for s in sweep_list}
 
     try:
-        neuron, best_param, begin_param = optimize_neuron(model_config, sweep_index, dt, cut, bessel)
+        neuron, best_param, begin_param = optimize_neuron(model_config, sweep_index, dt, cut, bessel)  # noqa: F821
         ju.write(args.output_file, neuron.to_dict())
     except Exception as e:
         logging.error(e.message)

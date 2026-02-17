@@ -44,7 +44,7 @@ class CountSubImage(SegmentationSubImage, PolygonSubImage):
 
         if self.injection_polygon_key in self.images:
             self.images["injection"] = self.images[self.injection_polygon_key]
-            del self.images[injection_polygon_key]
+            del self.images[injection_polygon_key]  # noqa: F821
         else:
             self.extract_injection_from_segmentation()
         del self.images["segmentation"]

@@ -27,7 +27,7 @@ def save_figure(fig, figsize, save_dir, folder, filename, formats=[".png"]):
     mpl.rcParams["pdf.fonttype"] = 42
     fig.set_size_inches(figsize)
     for f in formats:
-        fig.savefig(os.path.join(fig_dir, fig_title + f), transparent=True, orientation="landscape")
+        fig.savefig(os.path.join(fig_dir, fig_title + f), transparent=True, orientation="landscape")  # noqa: F821
 
 
 def get_dff_matrix(session):
@@ -223,7 +223,7 @@ def plot_mean_trace(traces, window=[-4, 8], interval_sec=1, ylabel="dF/F", legen
     """
     ophys_frame_rate = 31.0  # PROBLEM, shouldn't hard code this here
     if ax is None:
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots()  # noqa: F821
     if len(traces) > 0:
         trace = np.mean(traces, axis=0)
         times = np.arange(0, len(trace), 1)

@@ -66,7 +66,7 @@ def test_stimuli_in_session():
             assert session_type in si.sessions_with_stimulus(stimulus_type)
 
 
-def test_stimuli_in_session():
+def test_stimuli_in_session():  # noqa: F811
     test_dict = {si.THREE_SESSION_A: 4, si.THREE_SESSION_B: 4, si.THREE_SESSION_C: 4, si.THREE_SESSION_C2: 5}
 
     for session in si.SESSION_LIST:
@@ -270,7 +270,7 @@ def test_monitor_basic_spatial_unit():
     np.testing.assert_almost_equal(m.pixel_size, 0.01)
 
 
-def test_pixels_to_visual_degrees():
+def test_pixels_to_visual_degrees():  # noqa: F811
     m = si.BrainObservatoryMonitor()
 
     np.testing.assert_almost_equal(m.pixels_to_visual_degrees(45), 4.64716996476)

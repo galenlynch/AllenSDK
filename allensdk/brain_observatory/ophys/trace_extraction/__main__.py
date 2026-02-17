@@ -72,7 +72,7 @@ def write_trace_file(data, names, path):
     logging.debug("Writing {}".format(path))
 
     if sys.version_info.major == 2:
-        utf_dtype = h5py.special_dtype(vlen=unicode)
+        utf_dtype = h5py.special_dtype(vlen=unicode)  # noqa: F821
     elif sys.version_info.major == 3:
         utf_dtype = h5py.special_dtype(vlen=str)
     else:

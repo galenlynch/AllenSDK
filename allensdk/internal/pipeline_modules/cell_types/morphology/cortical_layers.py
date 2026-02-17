@@ -83,13 +83,13 @@ color_table.append((78, 89, 30))
 
 
 def color_by_index(i):
-    global color_table
+    global color_table  # noqa: F824
     #
     return color_table[i % len(color_table)]
 
 
 def draw_morphology(nrn, img, somax, somay, color_by_layer=False):
-    global LINE_WIDTH, resolution
+    global LINE_WIDTH, resolution  # noqa: F824
     #
     soma_col = (0, 0, 0)
     axon_col = (70, 130, 180)

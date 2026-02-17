@@ -58,7 +58,7 @@ class ApplicationConfig(object):
 
         if default_log_config is None:
             default_log_config = ApplicationConfig._DEFAULT_LOG_CONFIG
-            lc.fileConfig(_DEFAULT_LOG_CONFIG)
+            lc.fileConfig(_DEFAULT_LOG_CONFIG)  # noqa: F821
 
         ApplicationConfig._log.info("default log config: %s" % (default_log_config))
 

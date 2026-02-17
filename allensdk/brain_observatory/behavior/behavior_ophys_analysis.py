@@ -39,14 +39,14 @@ def plot_example_traces_and_behavior(
     for i, cell_roi_id in enumerate(cell_roi_ids):
         trace = dataset.dff_traces[dataset.dff_traces["cell_roi_id"] == cell_roi_id]["dff"].values[0]
         ax[i] = plot_trace(dataset.ophys_timestamps, trace, ax=ax[i], title="", ylabel=str(cell_roi_id))
-        ax[i] = add_stim_color_span(dataset, ax=ax[i], xlim=xlim)
-        ax[i] = restrict_axes(xmin_seconds, xmax_seconds, interval_seconds, ax=ax[i])
+        ax[i] = add_stim_color_span(dataset, ax=ax[i], xlim=xlim)  # noqa: F821
+        ax[i] = restrict_axes(xmin_seconds, xmax_seconds, interval_seconds, ax=ax[i])  # noqa: F821
         ax[i].set_xlabel("")
         ymin, ymax = ax[i].get_ylim()
         ymins.append(ymin)
         ymaxs.append(ymax)
         if cell_label:
-            ax[i].set_ylabel(str(cell_index))
+            ax[i].set_ylabel(str(cell_index))  # noqa: F821
         else:
             ax[i].set_ylabel("dF/F")
         sns.despine(ax=ax[i])
@@ -56,8 +56,8 @@ def plot_example_traces_and_behavior(
 
     i += 1
     ax[i].set_ylim([np.amin(ymins), 1])
-    ax[i] = plot_behavior_events(dataset, ax=ax[i], behavior_only=True)
-    ax[i] = add_stim_color_span(dataset, ax=ax[i], xlim=xlim)
+    ax[i] = plot_behavior_events(dataset, ax=ax[i], behavior_only=True)  # noqa: F821
+    ax[i] = add_stim_color_span(dataset, ax=ax[i], xlim=xlim)  # noqa: F821
     ax[i].set_xlim(xlim)
     ax[i].set_ylabel("")
     ax[i].axes.get_yaxis().set_visible(False)
@@ -67,8 +67,8 @@ def plot_example_traces_and_behavior(
     if include_running:
         i += 1
         ax[i].plot(dataset.stimulus_timestamps, dataset.running_speed)
-        ax[i] = add_stim_color_span(dataset, ax=ax[i], xlim=xlim)
-        ax[i] = restrict_axes(xmin_seconds, xmax_seconds, interval_seconds, ax=ax[i])
+        ax[i] = add_stim_color_span(dataset, ax=ax[i], xlim=xlim)  # noqa: F821
+        ax[i] = restrict_axes(xmin_seconds, xmax_seconds, interval_seconds, ax=ax[i])  # noqa: F821
         ax[i].set_ylabel("run speed\n(cm/s)")
         #         ax[i].axes.get_yaxis().set_visible(False)
         sns.despine(ax=ax[i])
@@ -78,8 +78,8 @@ def plot_example_traces_and_behavior(
     fig.tight_layout()
     plt.subplots_adjust(wspace=0, hspace=0)
     if save_dir is not None:
-        save_figure(fig, figsize, save_dir, "example_traces", "example_traces_" + str(xlim[0]) + suffix)
-        save_figure(
+        save_figure(fig, figsize, save_dir, "example_traces", "example_traces_" + str(xlim[0]) + suffix)  # noqa: F821
+        save_figure(  # noqa: F821
             fig, figsize, save_dir, "example_traces", str(dataset.ophys_experiment_id) + "_" + str(xlim[0]) + suffix
         )
         plt.close()

@@ -13,4 +13,4 @@ def test_get_session_data():
     api = EcephysProjectFixedApi()
     with pytest.raises(MissingDataError) as err:
         api.get_session_data(12345)
-        assert re.compile("12345").search(err.message) is not None
+        assert re.compile("12345").search(err.message) is not None  # noqa: F821
